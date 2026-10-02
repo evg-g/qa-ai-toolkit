@@ -1,8 +1,9 @@
 # QA AI Toolkit
 
 A reusable kit for AI-assisted test automation with [Claude Code](https://claude.com/claude-code):
-one **skill** that writes Playwright e2e tests from a user story, and two **agents** that test a
-feature and then independently review that testing. It is generic: you adapt it to any web
+one **skill** that writes Playwright e2e tests from a user story, two **agents** that test a
+feature and then independently review that testing, and the **ADLC plugin** - a `/refine` to
+`/implement` loop that proves every acceptance criterion with a test it has seen fail. It is generic: you adapt it to any web
 project by filling in two facts files, with a guide that tells you (or Claude) exactly how.
 
 Designed by me, built with Claude Code, and proven on a real project:
@@ -14,6 +15,7 @@ Designed by me, built with Claude Code, and proven on a real project:
 |------|--------------|------------|
 | `skills/e2e-test-generation` | Reads a ticket (Jira or pasted), plans the tests and waits for your approval, inspects the real UI in a browser to pick selectors, then writes the spec | Writing new e2e tests, mostly against a local build |
 | `agents/qa-tester` | Writes and runs e2e tests for a merged feature on a local or cloud QA target, reconciles every failure against the captured DOM, and reports passing tests, candidate bugs with evidence, and coverage gaps | Verifying a feature on a QA environment |
+| `plugins/adlc` | ADLC: `/refine` turns a ticket into a sealed, test-bound contract; `/implement` proves each criterion through a proof runner that needs a red before a green counts, and opens one PR per repo with the evidence. Jira or Markdown tickets. See [plugins/adlc/README.md](plugins/adlc/README.md) | Taking a ticket to a reviewed PR with proof, across one or several repos |
 | `agents/qa-reviewer` | A read-only critic: re-checks each test (would it fail if the feature broke?) and gives each reported bug a verdict (CONFIRMED / PLAUSIBLE / REFUTED) | A second, independent pair of eyes before results are trusted |
 
 The ideas behind it:
@@ -32,7 +34,9 @@ skills/e2e-test-generation/   SKILL.md + method files + PROJECT.template.md + sc
 agents/                       qa-tester.md, qa-reviewer.md
 qa/QA_CONTEXT.template.md     the facts file both agents read
 docs/ADAPT.md                 how to install and adapt the kit to a project
-examples/aurora/              filled-in PROJECT.md and QA_CONTEXT.md for a real app
+plugins/adlc/                 the ADLC plugin (skills, agents, bash gates, tracker + test adapters, self-tests)
+.claude-plugin/marketplace.json   makes this repo a Claude Code plugin marketplace
+examples/aurora/              filled-in PROJECT.md and QA_CONTEXT.md for a real app, and its ADLC config in adlc/
 ```
 
 ## Quick start
@@ -46,6 +50,15 @@ examples/aurora/              filled-in PROJECT.md and QA_CONTEXT.md for a real 
    - `/e2e-test-generation ABC-123` - writes the tests
    - "use qa-tester on ABC-123" - runs and reports
    - "use qa-reviewer on that report" - independent verdicts
+
+### ADLC
+
+```bash
+claude plugin marketplace add evg-g/qa-ai-toolkit
+cd <project-root> && claude plugin install adlc@qa-ai-toolkit --scope project
+```
+
+Then follow [plugins/adlc/README.md](plugins/adlc/README.md) ("Adapt it to a project").
 
 ## Requirements
 

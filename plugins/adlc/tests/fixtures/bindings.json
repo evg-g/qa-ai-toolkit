@@ -1,0 +1,17 @@
+{
+  "repo": "demo-api",
+  "bindings": {
+    "pytest-integration": {
+      "surface": ["api", "data"],
+      "runner": "pytest",
+      "location": "tests/integration",
+      "selector": "-k <TEST_NAME> -m agent_trusted"
+    },
+    "pytest-unit": {
+      "surface": ["logic"],
+      "runner": "pytest",
+      "location": "tests/unit",
+      "selector": "-k <TEST_NAME> -m agent_trusted"
+    }
+  }
+}

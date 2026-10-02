@@ -1,0 +1,21 @@
+{
+  "repo": "appointments-web",
+  "bindings": {
+    "vitest-unit": {
+      "surface": ["logic"],
+      "runner": "vitest",
+      "prefix": ["npx"],
+      "location": "src",
+      "selector": "documentation only: -t \"(?=.*@agent-trusted)(?=.*<TEST_NAME>)\" (jsdom: DOM only, so [logic] only)"
+    },
+    "playwright": {
+      "surface": ["component", "ui"],
+      "runner": "playwright",
+      "prefix": ["npx"],
+      "location": "e2e",
+      "args": ["--project=chromium"],
+      "env": { "CI": "1" },
+      "selector": "documentation only: --grep \"(?=.*@agent-trusted)(?=.*<TITLE>)\" in real Chromium against the MSW build"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "qa-ai-toolkit",
+  "owner": { "name": "evg-g" },
+  "description": "QA AI toolkit plugins: the ADLC proof loop.",
+  "plugins": [
+    {
+      "name": "adlc",
+      "source": "./plugins/adlc",
+      "description": "The /refine to /implement proof loop with sealed tickets and a non-vacuity proof runner."
+    }
+  ]
+}

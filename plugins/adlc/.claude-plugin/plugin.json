@@ -1,0 +1,8 @@
+{
+  "name": "adlc",
+  "version": "0.1.0",
+  "description": "ADLC - the /refine to /implement proof loop: a sealed ticket contract, a proof runner that needs a red before a green counts, and one PR per repo carrying the evidence.",
+  "author": { "name": "evg-g" },
+  "license": "MIT",
+  "keywords": ["adlc", "testing", "tdd", "agents", "proof"]
+}
