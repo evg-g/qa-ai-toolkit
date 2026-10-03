@@ -33,7 +33,7 @@ yourself — call the script and read its exit code.
 | any tracker action | `adlc-tracker.sh <action> <KEY> …` (fetch, baseline, claim, status, transition, read-block, write-block, append, comment) |
 | the shared branch name | `adlc-story-branch.sh <KEY>` |
 | a worktree on that branch | `adlc-worktree.sh <repo-path> <KEY> <base>` |
-| seal | `adlc-seal.sh write|check <file>` |
+| seal | `adlc-seal.sh write\|check <file>` |
 | lint | `adlc-lint.sh <file>` (`--no-seal` only on the draft before sealing) |
 
 If `.claude/adlc-config.md` is missing, stop and tell the engineer to create it from
