@@ -10,11 +10,11 @@ Generate Playwright e2e tests from a ticket, with browser inspection for selecto
 
 The method in this skill is generic. **Every project-specific fact** (how to run the app and the
 tests, auth, test data, folders, helpers, protected code, banned patterns, timers, how to inspect)
-lives in [PROJECT.md](PROJECT.md).
+lives in `PROJECT.md`, which you create in this folder from [PROJECT.template.md](PROJECT.template.md).
 
 ## Phase 0: Load the project facts (always first)
 
-1. Read [PROJECT.md](PROJECT.md) in full.
+1. Read `PROJECT.md` in full.
 2. If it is missing, STOP: tell the user to copy `PROJECT.template.md` to `PROJECT.md` and fill it
    in (the toolkit's `docs/ADAPT.md` explains how). If a section you need is empty, says
    `TODO(verify)`, or contradicts the repo, STOP and ask the user for the fact. Never guess a path,
@@ -30,7 +30,7 @@ lives in [PROJECT.md](PROJECT.md).
 
 | Topic | File |
 |-------|------|
-| Project facts (read first) | [PROJECT.md](PROJECT.md) (from [PROJECT.template.md](PROJECT.template.md)) |
+| Project facts (read first) | `PROJECT.md` — create it from [PROJECT.template.md](PROJECT.template.md) |
 | Locators & assertions | [PATTERNS.md](PATTERNS.md) |
 | Planning test data | [DATA.md](DATA.md) |
 | Full code templates | [TEMPLATES.md](TEMPLATES.md) |
